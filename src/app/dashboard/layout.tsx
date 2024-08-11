@@ -1,18 +1,21 @@
 import React from "react";
 import Header from "./components/Header";
-import SideBar from "./components/SideBar";
+import { auth } from "../../../auth";
+import { redirect } from "next/navigation";
 
-function layout({ children }: { children: React.ReactNode }) {
+async function layout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+
+  if (!session) {
+    // Redirect to the home page
+    redirect("/");
+  }
+
   return (
-    <div className="h-[100vh] w-full flex ">
-      <div className="w-[250px] h-full fixed left-0 top-0">
-        <SideBar />
-      </div>
-      <div className="flex-1 ml-[250px]">
-        <Header />
+    <div className="flex flex-col h-[100vh] w-full">
+      <Header />
 
-        <div className="p-6">{children}</div>
-      </div>
+      <div className="p-6">{children}</div>
     </div>
   );
 }
