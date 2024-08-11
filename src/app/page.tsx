@@ -30,7 +30,9 @@ export default async function Home() {
 
           {isLoggedIn && (
             <>
-              <p className="text-xs font-light">Hi, {session?.user?.email}</p>
+              {session?.user?.email && (
+                <p className="text-xs font-light">Hi, {session?.user?.email}</p>
+              )}
 
               <AuthButton
                 type="logout"
