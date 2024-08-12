@@ -1,7 +1,11 @@
 import { auth } from "../../auth";
 import AuthButton from "@/atoms/AuthButton";
-import { Button } from "@/components/ui/button";
+
 import Logo from "@/atoms/Logo";
+import { Button } from "@/components/ui/button";
+
+import { ArrowRight, LogOut, Rocket } from "lucide-react";
+import Link from "next/link";
 
 export default async function Home() {
   const session = await auth();
@@ -18,12 +22,13 @@ export default async function Home() {
 
           {!isLoggedIn && (
             <>
-              <p className="text-sm font-thin hidden md:block">
+              <p className="text-sm font-light hidden md:block">
                 Health Tracker with Passwordless Auth
               </p>
 
               <AuthButton className="flex gap-1 items-center rounded-2xl">
                 Login
+                <ArrowRight className="w-5 h-5" />
               </AuthButton>
             </>
           )}
@@ -40,6 +45,7 @@ export default async function Home() {
                 className="flex gap-1 items-center rounded-2xl"
               >
                 Sign out
+                <LogOut className="w-5 h-5" />
               </AuthButton>
             </>
           )}
@@ -51,16 +57,19 @@ export default async function Home() {
             <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-7xl font-bold">
               Track Your Health Effortlessly with Heltra
             </h1>
-            <p className="font-thin text-lg md:text-xl mt-1 leading-1 text-tertiary">
+            <p className="font-light text-lg md:text-xl mt-1 leading-1 text-tertiary">
               Monitor your vitals, access medical records, and stay on top of
               your health with our comprehensive tracker.
             </p>
 
-            <div className="w-full md:max-w-[200px] md:mx-auto">
+            <div className="w-full md:max-w-[250px] md:mx-auto">
               {session ? (
-                <Button size="xl" className="w-full md:text-lg">
-                  Go to dashboard
-                </Button>
+                <Link href="/dashboard" passHref>
+                  <Button size="xl" className="w-full md:text-lg flex gap-2">
+                    Go to dashboard
+                    <Rocket className="w-4 h-4 md:w-8 md:h-8" />
+                  </Button>
+                </Link>
               ) : (
                 <AuthButton size="xl" className="w-full md:text-lg">
                   Get started
@@ -73,7 +82,8 @@ export default async function Home() {
         {/* Footer */}
         <footer className="w-full border-t-1 border-t-gray-800 text-grey-900 text-center">
           <p className="text-sm font-thin md:font-light">
-            &copy; {new Date().getFullYear()} Heltra. All rights reserved.
+            &copy; {new Date().getFullYear()} Heltra. All rights reserved. Mufty
+            <code>{"</>"}</code>codes
           </p>
         </footer>
       </main>
