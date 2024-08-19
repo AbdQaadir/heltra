@@ -12,7 +12,7 @@ async function layout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex flex-col h-[100vh] w-full">
+    <div className="flex flex-col h-[100vh] w-full max-w-[1200px] mx-auto">
       <Header />
 
       <div className="p-6">{children}</div>
