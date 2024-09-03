@@ -79,7 +79,7 @@ function AddNewRecordsModal({ userId, initialValues, trigger }: PropsType) {
       triggerButtonRef.current?.click();
     }
   };
-  const isSubmitButtonDisabled = Object.values(formState).some(
+  const isSubmitButtonDisabled = Object.values(formState || {}).some(
     (value) => !value
   );
 

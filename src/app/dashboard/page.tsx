@@ -33,7 +33,7 @@ async function Page(props: any) {
     .order("created_at", { ascending: false })
     .limit(1);
 
-  const usersRecords = vitals ? vitals[0] : null;
+  const usersRecords = vitals && vitals[0] ? vitals[0] : {};
 
   const vitalsArray = [
     {
@@ -41,7 +41,7 @@ async function Page(props: any) {
       name: "Weight",
       description:
         "Weight is a measure of the force of gravity pulling down on the body. It depends on your mass and the distance between you and the center of the Earth.",
-      value: usersRecords.weight || "-",
+      value: usersRecords?.weight || "-",
       unit: "kg",
     },
     {
@@ -49,7 +49,7 @@ async function Page(props: any) {
       name: "Height",
       description:
         "Height is the measure of vertical distance, either how tall something or someone is, or how high up it is.",
-      value: usersRecords.height || "-",
+      value: usersRecords?.height || "-",
       unit: "cm",
     },
     {
@@ -57,7 +57,7 @@ async function Page(props: any) {
       name: "Blood Pressure",
       description:
         "Blood pressure is the force of blood pushing against the walls of the arteries as the heart pumps blood. If this pressure rises and stays high over time, it can damage the body in many ways.",
-      value: usersRecords.blood_pressure || "-",
+      value: usersRecords?.blood_pressure || "-",
       unit: "mmHg",
     },
     {
@@ -65,7 +65,7 @@ async function Page(props: any) {
       name: "Heart Rate",
       description:
         "Heart rate is the speed of the heartbeat measured by the number of contractions of the heart per minute (bpm).",
-      value: usersRecords.heart_rate || "-",
+      value: usersRecords?.heart_rate || "-",
       unit: "bpm",
     },
     {
@@ -73,7 +73,7 @@ async function Page(props: any) {
       name: "Blood Oxygen",
       description:
         "Blood oxygen level is the amount of oxygen circulating in the blood. Most of the oxygen is carried by red blood cells, which collect oxygen from the lungs and deliver it to all parts of the body.",
-      value: usersRecords.blood_oxygen || "-",
+      value: usersRecords?.blood_oxygen || "-",
       unit: "%",
     },
     {
@@ -81,7 +81,7 @@ async function Page(props: any) {
       name: "Temperature",
       description:
         "Body temperature is a measure of your body’s ability to make and get rid of heat. If you tell your doctor about your temperature reading, be sure to say where it was taken: in the mouth, the rectum, the ear, or the armpit.",
-      value: usersRecords.temperature || "-",
+      value: usersRecords?.temperature || "-",
       unit: "°C",
     },
   ];
@@ -95,7 +95,7 @@ async function Page(props: any) {
 
             {usersRecords?.created_at && (
               <p className="text-small font-thin">
-                Last updated: {new Date(usersRecords.created_at).toUTCString()}
+                Last updated: {new Date(usersRecords?.created_at).toUTCString()}
               </p>
             )}
           </div>

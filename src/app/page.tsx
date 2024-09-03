@@ -7,12 +7,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, LogOut, Rocket } from "lucide-react";
 import Link from "next/link";
 
+import PasskeyReadiness from "@/atoms/PasskeyReadiness";
+
 export default async function Home() {
   const session = await auth();
 
   const isLoggedIn = !!session;
   return (
     <>
+      <PasskeyReadiness />
+
       <main className="py-8 px-5 h-[100vh] flex flex-col justify-between overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between w-full max-w-[900px] mx-auto py-2 px-3 md:px-6 border-2 rounded-3xl shadow-tertiary border-secondary">
